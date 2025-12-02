@@ -1,0 +1,32 @@
+# ============================================
+# IAJ MANAGEMENT HUB - Environment Configuration
+# Production-Ready Configuration v2.0
+# ============================================
+# Copy this to .env and update with your values
+
+# SERVER CONFIGURATION
+ENVIRONMENT=production
+DEBUG=false
+HOST=0.0.0.0
+PORT=8000
+RELOAD=false
+
+# CORS CONFIGURATION
+ALLOWED_ORIGINS=https://storygrid-pro-production.up.railway.app,http://localhost:3000
+
+# SUPABASE CONFIGURATION
+SUPABASE_URL=your_supabase_url_here
+SUPABASE_KEY=your_supabase_anon_key_here
+
+# ANTHROPIC API
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+
+# HIGH PRIORITY SYSTEMS (5 min intervals)
+STORY_GRID_PRO_URL=https://storygrid-pro-production.up.railway.app
+IAJ_SOCIAL_MAIN_URL=https://web-production-29982.up.railway.app
+
+# MEDIUM PRIORITY SYSTEMS (10 min intervals)
+AGENT_TRAINING_URL=https://web-production-29982.up.railway.app/api/agent-training
+VIDEO_PROCESSOR_URL=https://web-production-29982.up.railway.app/api/video-processor
+SOCIAL_STUDIO_URL=https://web-production-29982.up.railway.app/api/social-studio
+BATCH_STUDIO_URL=https://web-production-29982.up.railway.app/api/social-studio/batch
