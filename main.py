@@ -32,12 +32,32 @@ logger = logging.getLogger(__name__)
 # Load environment variables
 load_dotenv()
 
-# Initialize clients
-supabase: Client = create_client(
-    os.getenv("SUPABASE_URL"),
-    os.getenv("SUPABASE_KEY")
-)
-anthropic_client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+# Initialize clients with error handling for missing env vars
+def init_supabase() -> Optional[Client]:
+    url = os.getenv("SUPABASE_URL")
+    key = os.getenv("SUPABASE_KEY")
+    if url and key:
+        try:
+            return create_client(url, key)
+        except Exception as e:
+            logger.error(f"Failed to initialize Supabase: {e}")
+            return None
+    logger.warning("SUPABASE_URL or SUPABASE_KEY not set - database features disabled")
+    return None
+
+def init_anthropic() -> Optional[Anthropic]:
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if api_key:
+        try:
+            return Anthropic(api_key=api_key)
+        except Exception as e:
+            logger.error(f"Failed to initialize Anthropic: {e}")
+            return None
+    logger.warning("ANTHROPIC_API_KEY not set - AI features disabled")
+    return None
+
+supabase: Optional[Client] = init_supabase()
+anthropic_client: Optional[Anthropic] = init_anthropic()
 
 # System configuration with check intervals
 SYSTEMS = {
