@@ -71,7 +71,7 @@ SYSTEMS = {
     },
     "iaj_social_main": {
         "name": "IAJ Social Main",
-        "url": os.getenv("IAJ_SOCIAL_MAIN_URL"),
+        "url": os.getenv("IAJ_SOCIAL_BASE_URL"),
         "endpoint": "/api/status",
         "description": "Main IAJ Social application",
         "check_interval": 300,  # 5 minutes
@@ -79,7 +79,7 @@ SYSTEMS = {
     },
     "agent_training": {
         "name": "Agent Training",
-        "url": os.getenv("IAJ_SOCIAL_MAIN_URL"),
+        "url": os.getenv("IAJ_SOCIAL_BASE_URL"),
         "endpoint": "/api/agent-training/status",
         "description": "AI agent training module",
         "check_interval": 600,  # 10 minutes
@@ -87,7 +87,7 @@ SYSTEMS = {
     },
     "video_processor": {
         "name": "Video Processor",
-        "url": os.getenv("IAJ_SOCIAL_MAIN_URL"),
+        "url": os.getenv("IAJ_SOCIAL_BASE_URL"),
         "endpoint": "/api/video-processor/status",
         "description": "Video processing module",
         "check_interval": 600,  # 10 minutes
@@ -95,7 +95,7 @@ SYSTEMS = {
     },
     "social_studio": {
         "name": "Social Studio",
-        "url": os.getenv("IAJ_SOCIAL_MAIN_URL"),
+        "url": os.getenv("IAJ_SOCIAL_BASE_URL"),
         "endpoint": "/api/social-studio/status",
         "description": "AI content creation module",
         "check_interval": 600,  # 10 minutes
@@ -103,7 +103,7 @@ SYSTEMS = {
     },
     "batch_studio": {
         "name": "Batch Studio",
-        "url": os.getenv("IAJ_SOCIAL_MAIN_URL"),
+        "url": os.getenv("IAJ_SOCIAL_BASE_URL"),
         "endpoint": "/api/social-studio/batch/status",
         "description": "Batch content processing module",
         "check_interval": 600,  # 10 minutes
