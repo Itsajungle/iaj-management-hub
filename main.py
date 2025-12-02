@@ -192,8 +192,16 @@ async def lifespan(app: FastAPI):
     logger.info("✅ Auto-cleanup scheduled daily at 2:00 AM")
     logger.info("=" * 80)
     
-    # Run initial health check
-    await check_all_systems()
+    # Schedule initial health check to run after startup (non-blocking)
+    # This prevents slow health checks from blocking the app startup
+    scheduler.add_job(
+        check_all_systems,
+        trigger='date',  # Run once
+        id="initial_health_check",
+        name="Initial Health Check",
+        replace_existing=True
+    )
+    logger.info("📋 Initial health check scheduled (runs in background)")
     
     yield
     
